@@ -8,7 +8,7 @@ import java.util.Date;
 public class Item implements Serializable {
 
 
-    private String productKey;
+    private int productKey;
     private String productName;
     private String productExt;
 
@@ -16,13 +16,13 @@ public class Item implements Serializable {
     private String uptDate;
 
 
-    public Item(String productKey, String productName, String productExt) {
+    public Item(int productKey, String productName, String productExt) {
         this.productKey = productKey;
         this.productName = productName;
         this.productExt = productExt;
     }
 
-    public String getProductKey() {
+    public int getProductKey() {
         return productKey;
     }
 

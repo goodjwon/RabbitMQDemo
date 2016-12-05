@@ -5,6 +5,9 @@
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
+import org.apache.commons.lang3.SerializationUtils;
+
+import java.io.Serializable;
 
 public class Send {
     private final static String QUEUE_NAME = "hello";
@@ -18,21 +21,31 @@ public class Send {
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-        String message = "Hello World!";
+        //String message = "Hello World!";
 
-        Item item = new Item("1","A4","제품설명서 전달");
-
+        Item item = null;
 
 
         for(int i= 0;i<=5;i++){
-            message = "Hello World!2"+"_"+i;
-            channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
-            
+            //message = "Hello World!2"+"_"+i;
+            //channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
+            item = new Item(i,"A4","제품설명서 전달_"+i);
+            channel.basicPublish("", QUEUE_NAME, null, ObjectToByteArray(item));
         }
 
-        System.out.println(" [x] Sent '" + message + "'");
+            //System.out.println(" [x] Sent '" + message + "'");
 
         channel.close();
         connection.close();
+    }
+
+
+    private static byte[] ObjectToByteArray(Object obj)
+    {
+        if(obj == null)
+            return null;
+        byte[] data = SerializationUtils.serialize((Serializable) obj);
+
+        return data;
     }
 }
