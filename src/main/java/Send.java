@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 /**
  * 전문 전송 부
+ * ITEM 객체를 전송한다.
  */
 public class Send {
     private final static String QUEUE_NAME = "hello";
