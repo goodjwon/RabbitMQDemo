@@ -13,7 +13,9 @@ import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.IOException;
 
-
+/**
+ * 수신 부
+ */
 public class Recv {
     private final static String QUEUE_NAME = "hello";
 

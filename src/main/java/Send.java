@@ -9,6 +9,9 @@ import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.Serializable;
 
+/**
+ * 전문 전송 부
+ */
 public class Send {
     private final static String QUEUE_NAME = "hello";
 
